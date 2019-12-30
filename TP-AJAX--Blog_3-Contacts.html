@@ -1,0 +1,113 @@
+<!-- CONTACTS ---------------------------------------------------------------------------->
+<section class="sectCont">
+    <h2>Formulaire de contact</h2>
+    <form method="post" action="traitement.php" enctype="" autocomplete="" onsubmit="return false">
+        <fieldset>
+            <legend>Votre Identité</legend>
+            <div id="cellIdent" class="cellAlign">
+                <div class="cellCont">
+                    <input type="radio" name="Civilité" value="Mademoiselle" required />Mademoiselle<br>
+                    <input type="radio" name="Civilité" value="Madame"/>Madame<br>
+                    <input type="radio" name="Civilité" value="Monsieur"/>Monsieur
+                    <br>
+                    <p>
+                        <label for="nom">*Nom :</label>
+                        <input type="text" id="nom" name="nom" size="30" placeholder="Nom" required/>
+                    </p>
+                    <p>
+                        <label for="prenom">*Prénom :</label>
+                        <input type="text" id="prenom" name="prenom" size="30" placeholder="Prénom" required />
+                    </p>
+                </div>
+                <div class="cellCont">
+                    <p>
+                        <label for="age">*Votre Age :</label>
+                        <input type="number" id="age" name="age" placeholder="Age" min="18" max="65" value="18" />
+                    </p>
+                    <p>
+                        <label for="birth">Votre Date de naissance :</label>
+                        <input type="date" id="birth" name="birth" />
+                    </p>
+                    <p>
+                        <label for="ville">Votre Ville :</label>
+                        <input type="text" id="ville" name="ville" placeholder="Ville" disabled />
+                    </p>
+                </div>
+            </div>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Renseignements et Réunions</legend>
+            <div class="cellAlign">
+                <div id="cellExp" class="cellCont">
+                    Avez vous déjà eu une expérience en développement web :
+                    <br><br><legend>Matières étudiées :</legend><br>
+                    <div id="matieres">
+                        <input type="checkbox" name="html" value="html" />Html5<br>
+                        <input type="checkbox" name="css" value="css" />Css3<br>
+                        <input type="checkbox" name="js" value="js" />Javascript<br>
+                        <input type="checkbox" name="nodejs" value="nodejs" />Nodejs<br>
+                        <input type="checkbox" name="tsc" value="tsc" />Typescript<br>
+                        <input type="checkbox" name="sql" value="sql" />Sql<br>
+                    </div>
+                </div>
+                <div id="cellRdv" class="cellCont">
+                    Des réunions d'information collective ont lieu au centre de l'AFPA de Créteil,
+                    <br><br><label for="j">Réunion le </label>
+                    <select id="date_info" name="date_info">
+                        <option value="Lundi 14/10/2019">Lundi 14 novembre 2019</option>
+                        <option value="Mardi 15/10/2019">Mardi 15 octobre 2019</option>
+                        <option value="Jeudi 07/11/2019">Jeudi 7 novembre 2019</option>
+                        <option value="Vendredi 15/11/2019">Vendredi 15 novmebre 2019</option>
+                    </select>
+                </div>
+            </div>
+            <div class="cellAlign">
+                <div id="cellInfo" class="cellCont">
+                    <p>
+                        <label for="info">Avez-vous des informations complémentaires à renseigner</label>
+                        <br><br><textarea id="info" name="info"	rows="10" cols="80" ></textarea>
+                    </p>
+                    <p>
+                        <label for="matricule">Matricule :</label>
+                        <input type="text" id="matricule" name="matricule" value="100258" hidden />
+                    </p>
+                </div>
+            </div>
+        </fieldset>
+        <br>
+        <fieldset>
+            <div class="cellAlign">
+                <div id="data" class="cellCont">
+                    <p>
+                        Si vous êtes demandeur d'emploi, vous pouvez nous fournir dès à présent votre attestation d'inscription sur la liste des demandeur d'emploi.<br/>
+                        <input type="file" id="fichier" name="fichier" /> <label for="fichier">Télécharger</label>
+                    </p>
+                    <p>
+                        <label for="email">Votre e-mail</label>
+                        <input type="email" id="email" name="email" placeholder="renseigner votre e-mail" /><br/>
+                        Le récapitulatif de votre formulaire ainsi que votre identifiant vous sera envoyé par e-mail.
+                    </p>
+                    <p>
+                        Pour suivre l'avancement de vos demandes, Créez votre mot de passe pour vous reconnecter ultérieurement :<br/>
+                        <label for="pass">Mot de passe</label>
+                        <input type="password" id="pass" name="pass" placeholder="Mot de passe" />
+                    </p>
+                    <p>
+                        <input type="reset" value="Annuler" />
+                        <input type="submit" value="Envoyer" />
+                    </p>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</section>
+<section class="sectCont">
+    <h2>Adresse</h2>
+    <address>
+        <p>
+            AFPA - Créteil
+            <br>09 rue Marc Séguin, 94000 CRETEIL
+        </p>
+    </address>
+</section>

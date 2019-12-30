@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8" />
+	<title>DDWAA - Administration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./TP-AJAX--Style.css" />
+	<link href="https://fonts.googleapis.com/css?family=Ranga&display=swap" rel="stylesheet">
+	<link rel="shortcut icon" href="10E-_Favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="10E-_Favicon/favicon.png" type="image/png">
+	<link rel="icon" sizes="32x32" href="10E-_Favicon/favicon-32.png" type="image/png">
+	<link rel="icon" sizes="64x64" href="10E-_Favicon/favicon-64.png" type="image/png">
+    <link rel="icon" sizes="96x96" href="10E-_Favicon/favicon-96.png" type="image/png">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <main>
+        
+        <!-- En tête ----------------------------------------------------------------------------->
+        <header>
+            <!-- <img id="banniere" src="Images/DW1+2+4.jpg" alt="Devenir Développeur Web avec l'AFPA" /> -->
+            <h1 id="MonBlog">DDWAA - Administration</h1>
+        </header>
+        
+        <!-- barre de navigation head ------------------------------------------------------------>
+        <nav id="navhead" class="mt-3">
+            <ul>
+                <li><a href="TP-AJAX--Blog.html" id="acceuil" class="navhead" alt="Acceuil"><div>Acceuil</div></a></li>
+                <li><a href="TP-AJAX--Blog.html" id="logout" class="navhead" alt="Qui suis-je"><div>Déconnexion</div></a></li>
+            </ul>
+        </nav>
+        <!-- ADMINISTRATION ---------------------------------------------------------------------->
+        <section id="sectAdmin" class="m-auto">
+            <h2>Administration</h2>
+            <form class="row justify-content-center align-items-center" method="post" onsubmit="return false">
+                <div class="form-group col-6">
+                    <h3 class="h4 text-left mb-0 mt-3"><label for="titre">Titre de l'article </label><h3>
+                    <input type="text" class="form-control" id="titre" placeholder="Enter le nom de l'article'">
+                        
+                    <h3 class="h4 text-left mb-0 mt-3"><label for="image">Image de l'article</label></h3>
+                    <input type="file" class="form-control" id="image">
+                    
+                    <h3 class="h4 text-left mb-0 mt-3"><label for="parution">Date de parution</label></h3>
+                    <input type="date" class="form-control" id="parution" placeholder="Date de parution de l'article">
+            
+                    <h3 class="h4 text-left mb-0 mt-3"><label for="auteur">Auteur de l'article </label></h3>
+                    <input type="text" class="form-control" id="auteur" placeholder="Enter le nom de l'auteur de l'article">
+
+                    <br>
+                    <div class="row justify-content-center">
+                        <button type="Submit" class="col-4 mx-1 btn btn-primary">Ajouter au tableau</button>
+                        <button type="reset" class="col-4 mx-1 btn btn-danger">Annuler</button>
+                    </div>
+
+                </div>
+                <div class="form-group col-4 text-center">
+                    <h3 class="h4 mb-0 mt-3"><label for="contenu">Contenu de l'article</label></h3>
+                    <textarea name="contenu" id="contenu" rows="12"  class="form-control col mb-3"></textarea>
+                </div>
+                <div class="w-100"></div>
+            </form>
+
+            <div id="contAdmin"></div>
+        </section>
+
+		<!-- barre de navigation foot ------------------------------------------------------------>
+		<nav id="navfoot">
+            <ul>
+                <li><a href="TP-AJAX--Blog.html" id="acceuil" class="navfoot" alt="Acceuil"><div>Acceuil</div></a></li>
+                <li><a href="TP-AJAX--Blog.html" id="logout" class="navfoot" alt="Qui suis-je"><div>Déconnexion</div></a></li>
+            </ul>
+        </nav>
+    
+        <!-- Pied de page ------------------------------------------------------------------------>
+        <footer id="footer">
+            <section id="copyr">
+                <hr>
+                <a href="#">Mentions légales</a> - Copyright &copy; Richard GRAVE 2019
+                <br>AFPA - DWWM promotion Septembre 2019
+            </section>
+        </footer>
+    </main>
+    <!-- <script src="./TP-AJAX--Script__a.js"></script> -->
+	<script src="./TP-AJAX--Script__b.js"></script>
+</body>
+</html>
