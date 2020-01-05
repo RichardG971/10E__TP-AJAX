@@ -1,3 +1,5 @@
+import { AffectPage } from "./TP-AJAX--Script_Export.js";
+
 console.log('window.location.pathname\n résultat : '+ window.location.pathname);
 console.log('window.location.pathname.includes("/TP-AJAX--Blog.html")\n résultat : '+ window.location.pathname.includes("/TP-AJAX--Blog.html"));
 console.log('window.location.pathname.includes("/TP-AJAX--Admin.html")\n résultat : '+ window.location.pathname.includes("/TP-AJAX--Admin.html"));
@@ -7,7 +9,7 @@ console.log('window.location.pathname.includes("/TP-AJAX--Admin.html")\n résult
 // console.log(document.getElementsByClassName('accClickNav')[0].getAttribute('class'));
 
 // FONCTION D'APPEL DES PAGES /////////////////////////////////////////////////////////////////////
-function getData(data) { // data est le paramètre de la fonction getData
+function getPageBase(data) { // data est le paramètre de la fonction getPageBase
     var article = data.getElementsByTagName("article");
     
     // console.log(article);
@@ -102,104 +104,14 @@ function getLog(data) {
 
 }
 
-class AffectPage {
-    addClick;
-    constructor(addClick) {
-        this.addClick = addClick;
-    }
-
-    setDataBase(xhrUrl, fGetData) {
-        var xhr = new XMLHttpRequest();
-        if(xhr) {
-            xhr.onreadystatechange = function() {
-                if(xhr.readyState == 4 && xhr.status == 200) {
-                    var donnees = xhr.responseXML;
-                    fGetData(donnees);
-                }
-            }
-            xhr.open("GET", xhrUrl, true);
-            xhr.send();
-        }
-        if(window.location.pathname.includes("/TP-AJAX--Blog.html")) {
-            for(var i = 0; i < document.getElementById("navhead").children[0].children.length; i++) {
-                if(this.addClick[0].getAttribute('class') == document.getElementById("navhead").children[0].children[i].children[0].getAttribute('class')) {
-                    document.getElementById("navhead").children[0].children[i].setAttribute('class', 'active');
-                    document.getElementById("navfoot").children[0].children[i].setAttribute('class', 'active');
-                } else {
-                    document.getElementById("navhead").children[0].children[i].removeAttribute('class');
-                    document.getElementById("navfoot").children[0].children[i].removeAttribute('class');
-                }
-            }
-        }
-    }
-    
-    clickDataXml(xhrUrl, fGetData, addClass) {
-        this.addClick[0].onclick = function() {
-            var xhr = new XMLHttpRequest();
-            if(xhr) {
-                xhr.onreadystatechange = function() {
-                    if(xhr.readyState == 4 && xhr.status == 200) {
-                        var donnees = xhr.responseXML;
-                        fGetData(donnees);
-                    }
-                }
-                xhr.open("GET", xhrUrl, true);
-                xhr.send();
-            }
-            for(var i = 0; i < document.getElementById("navhead").children[0].children.length; i++) {
-                if(addClass == document.getElementById("navhead").children[0].children[i].children[0].getAttribute('class')) {
-                    document.getElementById("navhead").children[0].children[i].setAttribute('class', 'active');
-                    document.getElementById("navfoot").children[0].children[i].setAttribute('class', 'active');
-                } else {
-                    document.getElementById("navhead").children[0].children[i].removeAttribute('class');
-                    document.getElementById("navfoot").children[0].children[i].removeAttribute('class');
-                }
-            }
-        }
-    }
-    
-    clickDataTxt(xhrUrl, fGetData, addClass) {
-        this.addClick[0].onclick = function() {
-            var xhr = new XMLHttpRequest();
-            if(xhr) {
-                xhr.onreadystatechange = function() {
-                    if(xhr.readyState == 4 && xhr.status == 200) {
-                        var donnees = xhr.responseText;
-                        fGetData(donnees);
-                    }
-                }
-                xhr.open("GET", xhrUrl, true);
-                xhr.send();
-            }
-            for(var i = 0; i < document.getElementById("navhead").children[0].children.length; i++) {
-                if(addClass == document.getElementById("navhead").children[0].children[i].children[0].getAttribute('class')) {
-                    document.getElementById("navhead").children[0].children[i].setAttribute('class', 'active');
-                    document.getElementById("navfoot").children[0].children[i].setAttribute('class', 'active');
-                } else {
-                    document.getElementById("navhead").children[0].children[i].removeAttribute('class');
-                    document.getElementById("navfoot").children[0].children[i].removeAttribute('class');
-                }
-            }
-        }
-    }
-
-    setAllClicks() {
-        for(var i = 0; i < this.addClick.length; ++i) {
-            this.addClick[i].onclick = this.addClick[0].onclick;
-        }
-        console.log(this.addClick);
-    }
-
-}
-
 // Appel du xml et pour l'afficher en asynchrone
 var accPage = new AffectPage(document.getElementsByClassName('accClickNav'));
-accPage.setDataBase("TP-AJAX--Articles.xml", getData);
+accPage.setDataBase("TP-AJAX--Articles.xml", getPageBase);
 
 // Appel des fonctions suivantes que dans l'url "/TP-AJAX--Blog.html" grace à la condition suivante
 if(window.location.pathname.includes("/TP-AJAX--Blog.html")) {
 
-    accPage.clickDataXml("TP-AJAX--Articles.xml", getData, document.getElementsByClassName('accClickNav')[0].getAttribute('class'));
+    accPage.clickDataXml("TP-AJAX--Articles.xml", getPageBase, document.getElementsByClassName('accClickNav')[0].getAttribute('class'));
 
     var presentPage = new AffectPage(document.querySelectorAll('.presentClickNav'));
     presentPage.clickDataTxt("TP-AJAX--Blog_2-Presentation.html", getPage, document.querySelectorAll('.presentClickNav')[0].getAttribute('class'));
@@ -209,10 +121,9 @@ if(window.location.pathname.includes("/TP-AJAX--Blog.html")) {
 
     var loginPage = new AffectPage(document.getElementsByClassName('loginClickNav'));
     loginPage.clickDataTxt("TP-AJAX--Blog_4-Connexion.html", getLog, document.getElementsByClassName('loginClickNav')[0].getAttribute('class'));
+}
 
-    function addAllClicks() {
-        accPage.setAllClicks(), presentPage.setAllClicks(), contPage.setAllClicks(), loginPage.setAllClicks();
-    }
-
+function addAllClicks() {
+    accPage.setAllClicks(), presentPage.setAllClicks(), contPage.setAllClicks(), loginPage.setAllClicks();
 }
 // Fin condition pour l'appel des fonctions dans l'url "/TP-AJAX--Blog.html" //////////////////////
