@@ -1,4 +1,6 @@
-export class AffectPage {
+export { AffectPage };
+
+class AffectPage {
     addClick;
     constructor(addClick) {
         this.addClick = addClick;
@@ -29,7 +31,7 @@ export class AffectPage {
         }
     }
     
-    clickDataXml(xhrUrl, fGetData, addClass) {
+    clickDataXml(xhrUrl, fGetData, etatClass) {
         this.addClick[0].onclick = function() {
             var xhr = new XMLHttpRequest();
             if(xhr) {
@@ -43,7 +45,7 @@ export class AffectPage {
                 xhr.send();
             }
             for(var i = 0; i < document.getElementById("navhead").children[0].children.length; i++) {
-                if(addClass == document.getElementById("navhead").children[0].children[i].children[0].getAttribute('class')) {
+                if(etatClass == document.getElementById("navhead").children[0].children[i].children[0].getAttribute('class')) {
                     document.getElementById("navhead").children[0].children[i].setAttribute('class', 'active');
                     document.getElementById("navfoot").children[0].children[i].setAttribute('class', 'active');
                 } else {
@@ -54,7 +56,7 @@ export class AffectPage {
         }
     }
     
-    clickDataTxt(xhrUrl, fGetData, addClass) {
+    clickDataTxt(xhrUrl, fGetData, etatClass) {
         this.addClick[0].onclick = function() {
             var xhr = new XMLHttpRequest();
             if(xhr) {
@@ -68,7 +70,7 @@ export class AffectPage {
                 xhr.send();
             }
             for(var i = 0; i < document.getElementById("navhead").children[0].children.length; i++) {
-                if(addClass == document.getElementById("navhead").children[0].children[i].children[0].getAttribute('class')) {
+                if(etatClass == document.getElementById("navhead").children[0].children[i].children[0].getAttribute('class')) {
                     document.getElementById("navhead").children[0].children[i].setAttribute('class', 'active');
                     document.getElementById("navfoot").children[0].children[i].setAttribute('class', 'active');
                 } else {
@@ -76,6 +78,21 @@ export class AffectPage {
                     document.getElementById("navfoot").children[0].children[i].removeAttribute('class');
                 }
             }
+        }
+    }
+
+    addLiNav(addTextNav, addClassNav) {
+        var addLiNavH = document.createElement("li");
+        var addLiNavF = document.createElement("li");
+        addLiNavH.innerHTML = "<a href='#' class='"+ addClassNav +"' alt='"+ addTextNav +"'><div>"+ addTextNav +"</div></a>";
+        addLiNavF.innerHTML = "<a href='#' class='"+ addClassNav +"' alt='"+ addTextNav +"'><div>"+ addTextNav +"</div></a>";
+        document.getElementById("navhead").children[0].appendChild(addLiNavH);
+        document.getElementById("navfoot").children[0].appendChild(addLiNavF);
+    }
+
+    addIdNav(elemId, addClassNav) {
+        if(document.getElementById(elemId)) {
+            document.getElementById(elemId).setAttribute("class", addClassNav);
         }
     }
 

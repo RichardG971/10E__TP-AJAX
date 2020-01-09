@@ -104,6 +104,33 @@ function getLog(data) {
 
 }
 
+/* 
+new AffectPage(document.getElementsByClassName('param')     // Création d'objet pour créer les liens da navigation en AJAX
+    "param" nom de la class utilisée pour la navigation entre les pages
+
+AffectPage.setDataBase("param1", "param2")
+    "param1" url du fichier ciblé
+    "param2" function pour l'envoi des données (les function se trouvent en début de ce fichier)
+
+AffectPage.addLiNav("param1", "param2")     // Ajoute un élément <li> dans les 2 barres de navigation (haut et bas)
+    "param1" texte à afficher de l'onglet de navigation dans <li>
+    "param2" nom de la class utilisée pour la navigation entre les pages
+    
+AffectPage.clickDataXml("param1", "param2", "param3") || AffectPage.clickDataTxt("param1", "param2", "param3")
+    "param1" url du fichier ciblé
+    "param2" function pour l'envoi des données (les function se trouvent en début de ce fichier)
+    "param3" = document.getElementsByClassName('x')[0].getAttribute('class')
+        "x" récupérer la class de <a> qui sera comparée pour ajouter ou retirer la class active à <li> durant la navigation
+
+function addAllClicks() {     // function à ajouter en fin des function pour l'envoi des données
+    AffectPage.addIdNav("param1", "param2")     // Ajouter une class pour la navigation à un élément ciblé par son id
+        "param1" nom de l' id ciblé
+        "param2" nom de la class à affecter
+
+    AffectPage.setAllClicks()     // Permet d'ajouter l'évènement click pour la navigation à tous les éléments concernés par l'objet
+}
+*/
+
 // Appel du xml et pour l'afficher en asynchrone
 var accPage = new AffectPage(document.getElementsByClassName('accClickNav'));
 accPage.setDataBase("TP-AJAX--Articles.xml", getPageBase);
@@ -112,18 +139,22 @@ accPage.setDataBase("TP-AJAX--Articles.xml", getPageBase);
 if(window.location.pathname.includes("/TP-AJAX--Blog.html")) {
 
     accPage.clickDataXml("TP-AJAX--Articles.xml", getPageBase, document.getElementsByClassName('accClickNav')[0].getAttribute('class'));
-
-    var presentPage = new AffectPage(document.querySelectorAll('.presentClickNav'));
+    
+    var presentPage = new AffectPage(document.getElementsByClassName('presentClickNav'));
+    presentPage.addLiNav("Présentation", "presentClickNav");
     presentPage.clickDataTxt("TP-AJAX--Blog_2-Presentation.html", getPage, document.querySelectorAll('.presentClickNav')[0].getAttribute('class'));
 
     var contPage = new AffectPage(document.getElementsByClassName('contClickNav'));
+    contPage.addLiNav("Contacts", "contClickNav");
     contPage.clickDataTxt("TP-AJAX--Blog_3-Contacts.html", getPage, document.getElementsByClassName('contClickNav')[0].getAttribute('class'));
 
     var loginPage = new AffectPage(document.getElementsByClassName('loginClickNav'));
+    loginPage.addLiNav("Connexion", "loginClickNav");
     loginPage.clickDataTxt("TP-AJAX--Blog_4-Connexion.html", getLog, document.getElementsByClassName('loginClickNav')[0].getAttribute('class'));
 }
 
 function addAllClicks() {
+    presentPage.addIdNav("linkform", "contClickNav");
     accPage.setAllClicks(), presentPage.setAllClicks(), contPage.setAllClicks(), loginPage.setAllClicks();
 }
 // Fin condition pour l'appel des fonctions dans l'url "/TP-AJAX--Blog.html" //////////////////////
