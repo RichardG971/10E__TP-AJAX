@@ -55,7 +55,7 @@ function getPageBase(data) { // data est le paramètre de la fonction getPageBas
         for(var i = 0; i < article.length; i++) {
             texte += '<tr>';
             texte += '<td class="p-0 align-middle"><div class="d-flex align-items-center py-3 px-1"><div><div class="titreArt font-weight-bolder text-center text-uppercase">'+ article[i].children[0].childNodes[0].nodeValue +'</div><div><u>'+ article[0].children[2].nodeName +'&nbsp;:</u></div><div class="small">'+ article[i].children[2].childNodes[0].nodeValue +'</div></div></div></td>';
-            texte += '<td class="cellImg p-0 align-middle"><div><a href='+ article[i].children[1].childNodes[0].nodeValue +' target="blank_"><div class="d-flex align-items-center py-3 px-1"><div>'+ article[i].children[1].childNodes[0].nodeValue +'</div></div></a></div></td>';
+            texte += '<td class="cellImg p-0 align-middle"><div><a href='+ article[i].children[1].childNodes[0].nodeValue +' target="blank_"><div class="d-flex align-items-center py-3 px-1"><img src='+ article[i].children[1].childNodes[0].nodeValue +'/><div>'+ article[i].children[1].childNodes[0].nodeValue +'</div></div></a></div></td>';
             texte += '<td class="p-0 align-middle"><div class="d-flex align-items-center py-3 px-1"><div>'+ article[i].children[3].childNodes[0].nodeValue +'</div></div></td>';
             texte += '<td class="p-0 align-middle"><div class="d-flex align-items-center py-3 px-1"><div>'+ article[i].children[4].childNodes[0].nodeValue +'</div></div></td>';
             texte += '<td class="p-0 align-middle text-center"><a class="btn btn-success my-1 col d-block px-1 my-2 mx-1">Editer</a><a class="btn btn-danger my-1 col d-block px-1 my-2 mx-1">Supprimer</a></td>';
